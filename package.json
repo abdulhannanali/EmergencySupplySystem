@@ -1,0 +1,36 @@
+{
+  "name": "emergency-supply-system",
+  "version": "1.0.0",
+  "description": "A system for providing the hospitals with the emergency supplies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulhannanali/EmergencySupplySystem.git"
+  },
+  "keywords": [
+    "hospital",
+    "system",
+    "emergency",
+    "supply",
+    "system",
+    "non",
+    "profit",
+    "social",
+    "work",
+    "terrorism"
+  ],
+  "author": "Hannan Ali (abdulhannanali@outlook.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abdulhannanali/EmergencySupplySystem/issues"
+  },
+  "homepage": "https://github.com/abdulhannanali/EmergencySupplySystem#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongoose": "^4.4.12",
+    "morgan": "^1.7.0"
+  }
+}
