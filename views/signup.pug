@@ -1,0 +1,76 @@
+extends ./template.pug
+
+block content
+    .container
+        .jumbotron
+            .row
+                h2 Hospital Signup!
+                p. 
+                    If you are a hospital, you can signup here, by entering your details. You will be notified after we verify your details.
+        
+        .row
+            form(method="post" action="signup")
+                if (messages && messages.errors)
+                    each val in messages.errors
+                        include ./includes/validationAlert.pug
+                .row
+                    .col-sm-12
+                        .form-group
+                            label(for="hospitalName") Hospital Name:
+                            input.form-control#hospitalName(name="name" placeholder="Enter the name for the hospital")
+                .row
+                    .col-sm-12
+                        .form-group
+                            label(for="hospitalEmail") Email:
+                            input.form-control#hospitalEmail(name="email" type="text" placeholder="Enter the email for the hospital")
+                .row
+                    .col-sm-6
+                        .form-group
+                            label(for="hospitalPassword") Password:
+                            input.form-control(name="password" type="password" placeholder="Enter your password")
+                    .col-sm-6
+                        .form-group
+                            label(for="hospitalPasswordReenter") Re-enter the password:
+                            input.form-control(name="repassword" type="password" placeholder="Re enter the password")
+                .row
+                    .col-sm-12
+                        label(for="hospitalTypes") Type of hospital:
+                        .dropdown
+                            select(name="type" placeholder="Enter the type of hospital").form-control#hospitalTypes
+                                option(value="" disable selected) Select the hospital type
+                                each type in hospitalTypes
+                                    option=type
+                                option(value="Other") Other
+                .row
+                    .col-sm-12
+                        .form-group
+                            label(for="otherType") If other, please specify the type:
+                            input.form-control#otherType(name="otherType" type="text" placeholder="If other, specify the type:" maxlength="50")
+                .row
+                    .col-sm-12
+                        .form-group
+                            label(for="description") Enter the hospital's description
+                            textarea#description.form-control(name="description" type="richtext" rows=3 maxlength=5000)
+                            small#descriptionCharLimit
+                .row
+                    .col-sm-12
+                        .form-group
+                            button.btn.btn-primary(type="submit") Submit Application!
+                script(type="text/javascript").
+                    function descriptionCharCount () {
+                        var totalLength = #{descriptionLimit}
+                        var descriptionLength = $("#description").val().length
+                        var descriptionDisplay = $("#descriptionCharLimit")
+                        
+                        descriptionDisplay.html(descriptionLength + "/" + totalLength + " characters used")
+                    }
+                    
+                    window.onload = function () {
+                        descriptionCharCount()
+                    }
+                    
+                    document.getElementById("description").oninput = function () {
+                        descriptionCharCount()
+                    }
+                    
+                
